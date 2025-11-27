@@ -1,7 +1,7 @@
 import asyncio
 import aiohttp
 
-from wago_visu_client import WagoPLC, APIConnectionError
+from wago_visu_client import WagoPLC, ConnectionError
 
 session = aiohttp.ClientSession
 
@@ -11,7 +11,7 @@ async def main():
         try:
             values = await plc.get_data(["2|112|1|0"])
             print("Data:", values)
-        except APIConnectionError as e:
+        except ConnectionError as e:
             print("Error:", e)
         await asyncio.sleep(1)  # Optional delay
 
